@@ -5,7 +5,7 @@ const httpServer = require('http').createServer(app);
 // Socket.IO
 const io = require('socket.io')(httpServer, {
     cors: {
-        origin: "http://localhost:5173", // specific origin you want to give access to,
+        origin: "https://ravanchatroom.netlify.app/", // specific origin you want to give access to,
         methods: ["GET", "POST"], // allow only specified methods
         allowedHeaders: ["my-custom-header"], // allow only specified headers
         credentials: true // allow credentials (if needed)
