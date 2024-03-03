@@ -28,7 +28,6 @@ io.on('connection', (socket) => {
 
     // Handle chat message event
     socket.on('message', (msg) => {
-        console.log('message: ' + msg);
         // Emit the message to all connected clients along with sender's socket ID
         io.emit('message', { sender: socket.id, text: msg });
     });
