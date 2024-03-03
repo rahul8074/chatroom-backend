@@ -5,7 +5,7 @@ const httpServer = require('http').createServer(app);
 // Socket.IO
 const io = require('socket.io')(httpServer, {
     cors: {
-        origin: "https://ravanchatroom.netlify.app/", // specific origin you want to give access to,
+        origin: "http://localhost:5173", // specific origin you want to give access to,
         methods: ["GET", "POST"], // allow only specified methods
         allowedHeaders: ["my-custom-header"], // allow only specified headers
         credentials: true // allow credentials (if needed)
@@ -28,9 +28,9 @@ io.on('connection', (socket) => {
 
     // Handle chat message event
     socket.on('message', (msg) => {
-        console.log('message: ' + msg);
-        // Emit the message to all connected clients along with sender's socket ID
-        io.emit('message', { sender: socket.id, text: msg });
+        console.log('message: ' +JSON.stringify(connectedUsers));
+        // Emit the message to all connected clients
+        io.emit('message', { sender: connectedUsers[socket.id], text: msg });
     });
 
     // Store user information when they connect
